@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.92.100.148:3306/fast4ward_dev?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: Fblife@20171019
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: 47.92.76.66
+    port: 6379
+    password: fast4ward!@#$
+    database: 0
+mybatis:
+    type-aliases-package: com.ffcs.entity
+    mapper-locations: classpath:com/ffcs/mapper/*.xml
+
+mapper:
+    mappers:
+        - tk.mybatis.mapper.common.Mapper
+    not-empty: false
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+dubbo:
+  scan:
+    basePackages: com.ffcs.service
+  application:
+    name: game-provider
+  protocol:
+    port: 20881
+  registry:
+    address: zookeeper://47.92.76.66:2181
+server:
+  port: 9001
